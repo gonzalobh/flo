@@ -54,9 +54,17 @@
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-family: "Playfair Display", serif;
       font-size: 24px;
       letter-spacing: 0.5px;
+    }
+
+    .brand__logo {
+      height: 36px;
+      width: auto;
     }
 
     .contact-link {
@@ -250,7 +258,10 @@
 <body>
   <div class="page">
     <header class="header">
-      <div class="brand">Flora Hernández</div>
+      <div class="brand">
+        <img class="brand__logo" src="logo.svg" alt="Flora Hernández" />
+        <span>Flora Hernández</span>
+      </div>
       <a class="contact-link" href="tel:+56990758634">+56 9 9075 8634</a>
     </header>
 
