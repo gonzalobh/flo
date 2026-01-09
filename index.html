@@ -8,528 +8,324 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: "#f7f4ef",
+            ink: "#151515",
+            warm: "#6d665d",
+            accent: "#b58c3a",
+            soft: "#eee7db"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f7f4ef;
-      --text: #151515;
-      --muted: #6d665d;
-      --accent: #b58c3a;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: "Manrope", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      padding: 24px 20px 72px;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: "Playfair Display", serif;
-      font-size: 24px;
-      letter-spacing: 0.5px;
-    }
-
-    .brand__logo {
-      height: 36px;
-      width: auto;
-    }
-
-    .contact-link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .hero {
-      display: grid;
-      gap: 16px;
-      padding: 32px 0 48px;
-    }
-
-    .hero__eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-    }
-
-    .hero__title {
-      font-family: "Playfair Display", serif;
-      font-size: 32px;
-      line-height: 1.15;
-    }
-
-    .hero__text {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 520px;
-    }
-
-    .hero__cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 600;
-      width: fit-content;
-    }
-
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-
-    .properties {
-      display: grid;
-      gap: 28px;
-    }
-
-    .property-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 16px;
-      display: grid;
-      gap: 16px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .property-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(21, 21, 21, 0.08);
-    }
-
-    .card__media {
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .card__media img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.4s ease;
-    }
-
-    .property-card:hover .card__media img {
-      transform: scale(1.03);
-    }
-
-    .card__body {
-      display: grid;
-      gap: 8px;
-    }
-
-    .property__location {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .property__type {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .property__price {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .card__cta {
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .contact {
-      margin-top: 64px;
-      background: var(--white);
-      border-radius: 18px;
-      padding: 24px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact__title {
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
-    }
-
-    .contact__text {
-      color: var(--muted);
-    }
-
-    .contact__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .contact__button {
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .contact__link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
-      align-self: center;
-    }
-
-    footer {
-      margin-top: 48px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    @media (min-width: 768px) {
-      .page {
-        padding: 32px 48px 96px;
-      }
-
-      .hero__title {
-        font-size: 42px;
-      }
-
-      .properties {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .card__media {
-        aspect-ratio: 4 / 3;
-      }
-
-      .card__media img {
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    @media (min-width: 1100px) {
-      .properties {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+      color-scheme: light;
     }
   </style>
 </head>
-<body>
-  <div class="page">
-    <header class="header">
-      <div class="brand">
-        <img class="brand__logo" src="logo.svg" alt="Flora Hernández" />
-      </div>
-      <a class="contact-link" href="tel:+56990758634">+56 9 9075 8634</a>
-    </header>
+<body class="bg-canvas text-ink font-sans antialiased">
+  <div class="px-6 pb-24 pt-8 sm:px-10 lg:px-16">
+    <div class="mx-auto w-full max-w-6xl">
+      <header class="section flex items-center justify-between gap-6 py-10 lg:py-14">
+        <div class="brand flex items-center gap-3 font-serif text-2xl tracking-[0.04em]">
+          <img class="brand__logo h-10 w-auto" src="logo.svg" alt="Flora Hernández" />
+        </div>
+        <a class="contact-link text-sm font-semibold tracking-[0.08em] text-accent" href="tel:+56990758634">+56 9 9075 8634</a>
+      </header>
 
-    <section class="hero">
-      <span class="hero__eyebrow">Inmobiliaria boutique</span>
-      <h1 class="hero__title">Propiedades exclusivas en Machalí y Rancagua</h1>
-      <p class="hero__text">
-        Selección curada de casas, departamentos y sitios premium en la Región de O’Higgins. Diseño, privacidad y ubicación privilegiada para vivir o invertir con confianza.
-      </p>
-      <a class="hero__cta" href="#propiedades">Explorar propiedades</a>
-    </section>
-
-    <section id="propiedades">
-      <h2 class="section-title">20 propiedades destacadas</h2>
-      <div class="properties">
-        <article class="property-card">
-          <a class="card__media" href="detalles/adobesdenogales4.html">
-            <img src="imagenes/adobesdenogales4.jpg" alt="Casa en Venta en Adobes de Nogales" loading="lazy" />
+      <section class="section hero grid gap-8 pb-16 pt-6 lg:grid-cols-[minmax(0,2fr)_1fr] lg:gap-12 lg:pb-24">
+        <div class="flex flex-col gap-6">
+          <span class="hero__eyebrow text-xs font-semibold uppercase tracking-[0.3em] text-warm">INMOBILIARIA BOUTIQUE</span>
+          <h1 class="hero__title max-w-2xl font-serif text-4xl leading-[1.05] tracking-[0.01em] sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
+            Propiedades exclusivas
+            <br />
+            en Machalí y Rancagua
+          </h1>
+          <p class="hero__text max-w-2xl text-base text-warm sm:text-lg">
+            Vivir bien, invertir mejor.
+            <br />
+            Residencias seleccionadas en ubicaciones privilegiadas de la Región de O’Higgins.
+          </p>
+          <a class="hero__cta inline-flex w-full items-center justify-center rounded-xl bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#a1792f] sm:w-fit" href="#propiedades">
+            Explorar propiedades
           </a>
-          <div class="card__body">
-            <p class="property__location">Adobes de Nogales</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 11.500.-</p>
-            <a class="card__cta" href="detalles/adobesdenogales4.html">Ver propiedad</a>
-          </div>
-        </article>
+        </div>
+        <div class="hidden lg:block" aria-hidden="true"></div>
+      </section>
 
-        <article class="property-card">
-          <a class="card__media" href="detalles/altonogales.html">
-            <img src="imagenes/altonogales.jpeg" alt="Casa en Venta en Adobes de Nogales" loading="lazy" />
+      <section id="propiedades" class="section pt-10 lg:pt-16">
+        <div class="container">
+          <p class="editorial-title mb-8 font-serif text-2xl tracking-[0.06em] text-ink sm:text-3xl">Propiedades destacadas</p>
+        </div>
+        <div class="properties grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/adobesdenogales4.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/adobesdenogales4.jpg" alt="Casa en Venta en Adobes de Nogales" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Adobes de Nogales</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 11.500.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/adobesdenogales4.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/altonogales.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/altonogales.jpeg" alt="Casa en Venta en Adobes de Nogales" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Adobes de Nogales</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 11.000.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/altonogales.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/altodelvalleoct2022.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/altodelvalleoct2022.jpeg" alt="Departamento en Arriendo en Condominio Alto del Valle" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Condominio Alto del Valle</p>
+              <p class="property__type text-sm text-warm">Departamento en Arriendo</p>
+              <p class="property__price text-base font-semibold">$580.000.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/altodelvalleoct2022.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/mirador-de-nogales.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/elpolo11.jpeg" alt="Casa en Arriendo en El Polo de Machalí" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">El Polo de Machalí</p>
+              <p class="property__type text-sm text-warm">Casa en Arriendo</p>
+              <p class="property__price text-base font-semibold">$1.000.000.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/mirador-de-nogales.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/consultadental.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/consultadental.jpeg" alt="Consulta dental en Intersalud" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Intersalud (lado hospital Fusat)</p>
+              <p class="property__type text-sm text-warm">Arriendo o Venta de consulta dental</p>
+              <p class="property__price text-base font-semibold">$1.800.000.- (Arriendo), UF 3.030 (Venta)</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/consultadental.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/villaconstanza.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/villaconstanza.jpg" alt="Casa en Arriendo o Venta en Villa Constanza, Rancagua" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Villa Constanza, Rancagua</p>
+              <p class="property__type text-sm text-warm">Casa en Arriendo o Venta</p>
+              <p class="property__price text-base font-semibold">$950.000 / UF 7.500</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/villaconstanza.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/bello.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/bello.jpeg" alt="Departamento en Arriendo en Bello Horizonte, Rancagua" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Bello Horizonte, Rancagua</p>
+              <p class="property__type text-sm text-warm">Departamento en Arriendo</p>
+              <p class="property__price text-base font-semibold">$550.000</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/bello.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/san-fernando.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/san-fernando.jpeg" alt="Casa en Venta en San Fernando, Sexta Región" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">San Fernando, Sexta Región</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 5.900.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/san-fernando.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/loslirios3.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/loslirios3.jpeg" alt="Casa en arriendo en Los Lirios, Rancagua" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Los Lirios, Rancagua</p>
+              <p class="property__type text-sm text-warm">Casa en arriendo</p>
+              <p class="property__price text-base font-semibold">UF 45-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/loslirios3.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/lomatta5.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/lomatta5.jpeg" alt="Departamento en Venta en Jardines de Lo Matta" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Jardines de Lo Matta</p>
+              <p class="property__type text-sm text-warm">Departamento en Venta</p>
+              <p class="property__price text-base font-semibold">UF 6.900.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/lomatta5.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/mirador-de-nogales.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/miradordenogales.jpeg" alt="Casa en Venta en Mirador de Nogales" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Mirador de Nogales</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 13.000.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/mirador-de-nogales.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/losalerces.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/losalerces.jpeg" alt="Casa en Venta en Villa Los Alerces" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Villa Los Alerces</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 14.000.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/losalerces.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/jardinesdelomatta.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/jardinesdelomatta.jpeg" alt="Departamento en Arriendo en Jardines de Lo Matta" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Jardines de Lo Matta</p>
+              <p class="property__type text-sm text-warm">Departamento en Arriendo</p>
+              <p class="property__price text-base font-semibold">$900.000.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/jardinesdelomatta.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/lomatta4.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/lomatta4.jpeg" alt="Departamento en Venta en Parque Lo Matta, Rancagua" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Parque Lo Matta, Rancagua</p>
+              <p class="property__type text-sm text-warm">Departamento en Venta</p>
+              <p class="property__price text-base font-semibold">UF 8.350.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/lomatta4.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/lafontana.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/lafontana.jpeg" alt="Casa en Venta en Condominio La Fontana de Machalí" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Condominio La Fontana de Machalí</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 7.500.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/lafontana.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/elpolo7.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/elpolo7.jpg" alt="Casa en Venta en El Polo de Machalí" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">El Polo de Machalí, Rancagua</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 8.750.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/elpolo7.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/loslirios2.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/loslirios2.jpg" alt="Casa en Venta o Arriendo en Los Lirios, Requínoa" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Los Lirios, Requínoa</p>
+              <p class="property__type text-sm text-warm">Casa en Venta o Arriendo</p>
+              <p class="property__price text-base font-semibold">$2.400.000(Arriendo) - UF 21.000(Venta)</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/loslirios2.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/sandamian2.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/sandamian2.jpg" alt="Casa en Venta en San Damián" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">San Damián</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 14.100.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/sandamian2.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/polob.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/polob.jpeg" alt="Casa en Venta en El Polo B de Machalí" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">El Polo B de Machalí</p>
+              <p class="property__type text-sm text-warm">Casa en Venta</p>
+              <p class="property__price text-base font-semibold">UF 10.800.-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/polob.html">Ver propiedad</a>
+            </div>
+          </article>
+
+          <article class="property-card rounded-2xl border border-soft bg-white/80 p-6">
+            <a class="card__media block overflow-hidden rounded-xl" href="detalles/loslirios.html">
+              <img class="h-auto w-full object-cover sm:aspect-[4/3]" src="imagenes/loslirios.jpg" alt="Sitio en Venta en Los Lirios, Rancagua" loading="lazy" />
+            </a>
+            <div class="card__body mt-5 grid gap-2">
+              <p class="property__location text-base font-semibold">Los Lirios, Rancagua</p>
+              <p class="property__type text-sm text-warm">Sitio en Venta</p>
+              <p class="property__price text-base font-semibold">UF 3,3 por m2-</p>
+              <a class="card__cta mt-2 text-sm font-semibold text-accent" href="detalles/loslirios.html">Ver propiedad</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contact mt-20 rounded-2xl border border-soft bg-white/80 p-8 lg:mt-28 lg:p-12">
+        <h2 class="contact__title font-serif text-2xl tracking-[0.04em]">Contacto directo y confidencial</h2>
+        <p class="contact__text mt-3 text-sm uppercase tracking-[0.18em] text-warm">Machalí y Rancagua · Región de O’Higgins, Chile</p>
+        <div class="contact__actions mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <a class="contact__button inline-flex items-center justify-center rounded-xl bg-accent px-7 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#a1792f]" href="tel:+56990758634">
+            Llamar +56 9 9075 8634
           </a>
-          <div class="card__body">
-            <p class="property__location">Adobes de Nogales</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 11.000.-</p>
-            <a class="card__cta" href="detalles/altonogales.html">Ver propiedad</a>
-          </div>
-        </article>
+          <a class="contact__link text-sm font-semibold tracking-[0.08em] text-accent" href="tel:+56990758634">Agendar visita privada</a>
+        </div>
+      </section>
 
-        <article class="property-card">
-          <a class="card__media" href="detalles/altodelvalleoct2022.html">
-            <img src="imagenes/altodelvalleoct2022.jpeg" alt="Departamento en Arriendo en Condominio Alto del Valle" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Condominio Alto del Valle</p>
-            <p class="property__type">Departamento en Arriendo</p>
-            <p class="property__price">$580.000.-</p>
-            <a class="card__cta" href="detalles/altodelvalleoct2022.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/mirador-de-nogales.html">
-            <img src="imagenes/elpolo11.jpeg" alt="Casa en Arriendo en El Polo de Machalí" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">El Polo de Machalí</p>
-            <p class="property__type">Casa en Arriendo</p>
-            <p class="property__price">$1.000.000.-</p>
-            <a class="card__cta" href="detalles/mirador-de-nogales.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/consultadental.html">
-            <img src="imagenes/consultadental.jpeg" alt="Consulta dental en Intersalud" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Intersalud (lado hospital Fusat)</p>
-            <p class="property__type">Arriendo o Venta de consulta dental</p>
-            <p class="property__price">$1.800.000.- (Arriendo), UF 3.030 (Venta)</p>
-            <a class="card__cta" href="detalles/consultadental.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/villaconstanza.html">
-            <img src="imagenes/villaconstanza.jpg" alt="Casa en Arriendo o Venta en Villa Constanza, Rancagua" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Villa Constanza, Rancagua</p>
-            <p class="property__type">Casa en Arriendo o Venta</p>
-            <p class="property__price">$950.000 / UF 7.500</p>
-            <a class="card__cta" href="detalles/villaconstanza.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/bello.html">
-            <img src="imagenes/bello.jpeg" alt="Departamento en Arriendo en Bello Horizonte, Rancagua" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Bello Horizonte, Rancagua</p>
-            <p class="property__type">Departamento en Arriendo</p>
-            <p class="property__price">$550.000</p>
-            <a class="card__cta" href="detalles/bello.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/san-fernando.html">
-            <img src="imagenes/san-fernando.jpeg" alt="Casa en Venta en San Fernando, Sexta Región" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">San Fernando, Sexta Región</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 5.900.-</p>
-            <a class="card__cta" href="detalles/san-fernando.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/loslirios3.html">
-            <img src="imagenes/loslirios3.jpeg" alt="Casa en arriendo en Los Lirios, Rancagua" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Los Lirios, Rancagua</p>
-            <p class="property__type">Casa en arriendo</p>
-            <p class="property__price">UF 45-</p>
-            <a class="card__cta" href="detalles/loslirios3.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/lomatta5.html">
-            <img src="imagenes/lomatta5.jpeg" alt="Departamento en Venta en Jardines de Lo Matta" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Jardines de Lo Matta</p>
-            <p class="property__type">Departamento en Venta</p>
-            <p class="property__price">UF 6.900.-</p>
-            <a class="card__cta" href="detalles/lomatta5.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/mirador-de-nogales.html">
-            <img src="imagenes/miradordenogales.jpeg" alt="Casa en Venta en Mirador de Nogales" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Mirador de Nogales</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 13.000.-</p>
-            <a class="card__cta" href="detalles/mirador-de-nogales.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/losalerces.html">
-            <img src="imagenes/losalerces.jpeg" alt="Casa en Venta en Villa Los Alerces" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Villa Los Alerces</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 14.000.-</p>
-            <a class="card__cta" href="detalles/losalerces.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/jardinesdelomatta.html">
-            <img src="imagenes/jardinesdelomatta.jpeg" alt="Departamento en Arriendo en Jardines de Lo Matta" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Jardines de Lo Matta</p>
-            <p class="property__type">Departamento en Arriendo</p>
-            <p class="property__price">$900.000.-</p>
-            <a class="card__cta" href="detalles/jardinesdelomatta.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/lomatta4.html">
-            <img src="imagenes/lomatta4.jpeg" alt="Departamento en Venta en Parque Lo Matta, Rancagua" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Parque Lo Matta, Rancagua</p>
-            <p class="property__type">Departamento en Venta</p>
-            <p class="property__price">UF 8.350.-</p>
-            <a class="card__cta" href="detalles/lomatta4.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/lafontana.html">
-            <img src="imagenes/lafontana.jpeg" alt="Casa en Venta en Condominio La Fontana de Machalí" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Condominio La Fontana de Machalí</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 7.500.-</p>
-            <a class="card__cta" href="detalles/lafontana.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/elpolo7.html">
-            <img src="imagenes/elpolo7.jpg" alt="Casa en Venta en El Polo de Machalí" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">El Polo de Machalí, Rancagua</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 8.750.-</p>
-            <a class="card__cta" href="detalles/elpolo7.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/loslirios2.html">
-            <img src="imagenes/loslirios2.jpg" alt="Casa en Venta o Arriendo en Los Lirios, Requínoa" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Los Lirios, Requínoa</p>
-            <p class="property__type">Casa en Venta o Arriendo</p>
-            <p class="property__price">$2.400.000(Arriendo) - UF 21.000(Venta)</p>
-            <a class="card__cta" href="detalles/loslirios2.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/sandamian2.html">
-            <img src="imagenes/sandamian2.jpg" alt="Casa en Venta en San Damián" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">San Damián</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 14.100.-</p>
-            <a class="card__cta" href="detalles/sandamian2.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/polob.html">
-            <img src="imagenes/polob.jpeg" alt="Casa en Venta en El Polo B de Machalí" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">El Polo B de Machalí</p>
-            <p class="property__type">Casa en Venta</p>
-            <p class="property__price">UF 10.800.-</p>
-            <a class="card__cta" href="detalles/polob.html">Ver propiedad</a>
-          </div>
-        </article>
-
-        <article class="property-card">
-          <a class="card__media" href="detalles/loslirios.html">
-            <img src="imagenes/loslirios.jpg" alt="Sitio en Venta en Los Lirios, Rancagua" loading="lazy" />
-          </a>
-          <div class="card__body">
-            <p class="property__location">Los Lirios, Rancagua</p>
-            <p class="property__type">Sitio en Venta</p>
-            <p class="property__price">UF 3,3 por m2-</p>
-            <a class="card__cta" href="detalles/loslirios.html">Ver propiedad</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact">
-      <h2 class="contact__title">Contacto directo y confidencial</h2>
-      <p class="contact__text">Machalí y Rancagua · Región de O’Higgins, Chile</p>
-      <div class="contact__actions">
-        <a class="contact__button" href="tel:+56990758634">Llamar +56 9 9075 8634</a>
-        <a class="contact__link" href="tel:+56990758634">Agendar visita privada</a>
-      </div>
-    </section>
-
-    <footer>
-      Flora Hernández · Propiedades exclusivas · +56 9 9075 8634
-    </footer>
+      <footer class="section mt-16 border-t border-soft pt-8 text-center text-xs uppercase tracking-[0.2em] text-warm">
+        Flora Hernández · Propiedades exclusivas · +56 9 9075 8634
+      </footer>
+    </div>
   </div>
 </body>
 </html>
